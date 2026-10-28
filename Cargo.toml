@@ -1,0 +1,42 @@
+[package]
+name = "ggbp1-v2-historical"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.97.1"
+license = "MIT"
+publish = false
+description = "UNSAFE historical GGBP1R v2 parser/verifier archive; its prover is opt-in audit-only"
+readme = "historical-v2/README.md"
+
+[features]
+default = []
+# This preserves the audited vulnerability reproduction only. It MUST NOT be enabled by wallet
+# code or any production authorization path.
+historical-v2-prover = ["dep:rand"]
+
+[workspace]
+members = [
+    "wasm-verifier-harness",
+    "ggbp1-v3-review",
+    "ggbp1-v3-wasm-verifier-harness",
+]
+default-members = [
+    "ggbp1-v3-review",
+    "ggbp1-v3-wasm-verifier-harness",
+]
+resolver = "2"
+
+[dependencies]
+rand = { version = "=0.10.3", optional = true }
+sha2 = "=0.10.9"
+tari_crypto = "=0.23.4"
+tari_script = "=6.0.1-pre.2"
+tari_utilities = "=0.10.0"
+thiserror = "=2.0.21"
+
+[[example]]
+name = "generate_review_vectors"
+required-features = ["historical-v2-prover"]
+
+[profile.release]
+overflow-checks = true

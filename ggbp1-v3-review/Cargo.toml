@@ -1,0 +1,19 @@
+[package]
+name = "ggbp1-v3-review"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.97.1"
+license = "MIT"
+publish = false
+description = "Synthetic-only GGBP1R v3 hardened proof package for independent review"
+
+[dependencies]
+rand = "=0.10.3"
+sha2 = "=0.10.9"
+tari_crypto = "=0.23.4"
+tari_script = "=6.0.1-pre.2"
+tari_utilities = "=0.10.0"
+thiserror = "=2.0.21"
+
+[dev-dependencies]
+ggbp1-v2-historical = { path = ".." }

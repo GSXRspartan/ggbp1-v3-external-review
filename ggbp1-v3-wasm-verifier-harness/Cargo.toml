@@ -1,0 +1,16 @@
+[package]
+name = "ggbp1-v3-wasm-verifier-harness"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.97.1"
+license = "MIT"
+publish = false
+description = "Verifier-only browser Web Crypto WASM harness for GGBP1R v3 review vectors"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+getrandom = { version = "=0.4.3", features = ["wasm_js"] }
+ggbp1-v3-review = { path = "../ggbp1-v3-review" }
+wasm-bindgen = "=0.2.108"
